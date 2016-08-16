@@ -26,24 +26,9 @@ PlasmaComponents.ListItem {
     id: timetableItem
 
     width: parent.width
-    //height: parent.height
+    height: parent.height
     anchors.fill: parent
     enabled: ListView.isCurrentItem
-
-    readonly property var routeStops:   getModelData(timetableSource.data, "RouteStops", "")
-    readonly property var stopDateTime: getModelData(timetableSource.data, "DepartureDateTime", "00:00")
-    readonly property string startStop: getModelData(timetableSource.data, "StartStop", "Oslo Bussterminal")
-    readonly property string targetStop:getModelData(timetableSource.data, "Target", "Unknown")
-    readonly property string transportLine: getModelData(timetableSource.data, "TransportLine", "Unknown")
-
-    function getModelData(data, key, defaultValue) {
-        var source = model.name
-
-        return data[source] ? (
-            data[source]["departures"][timetableList.currentIndex][key] ?
-                data[source]["departures"][timetableList.currentIndex][key] : defaultValue
-        ) : defaultValue
-    }
 
     PlasmaComponents.Label {
         id: transportLineLabel
@@ -51,7 +36,7 @@ PlasmaComponents.ListItem {
             left: parent.left
             leftMargin: 5
         }
-        text: transportLine
+        text: model.TransportLine
         elide: Text.ElideRight
         wrapMode: Text.Wrap
         textFormat: Text.StyledText
@@ -65,7 +50,7 @@ PlasmaComponents.ListItem {
             leftMargin: 50          //FIXME: do not hardcode values
             rightMargin: 50         //FIXME: do not hardcode values
         }
-        text: targetStop
+        text: model.Target
         elide: Text.ElideRight
         wrapMode: Text.Wrap
         textFormat: Text.StyledText
@@ -77,7 +62,7 @@ PlasmaComponents.ListItem {
             right: parent.right
             rightMargin: 5
         }
-        text: stopDateTime
+        text: model.DepartureDateTime
         elide: Text.ElideRight
         wrapMode: Text.Wrap
         textFormat: Text.StyledText

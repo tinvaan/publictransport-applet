@@ -27,8 +27,6 @@ Column {
 
     property var timetableSourceExists: false
     property var alternativeSourceExists: false
-    readonly property string testArrivalSource: "Arrivals no_ruter|stop=Oslo Bussterminal"
-    readonly property string testDepartureSource: "Departures no_ruter|stop=Oslo Bussterminal"
 
     property var arrivalSource: ( function isArrivalSource(source) {
         return source.indexOf("Arrivals") >= 0
@@ -36,14 +34,11 @@ Column {
     property var departureSource: ( function isDepartureSource(source) {
         return source.indexOf("Departures") >= 0
     })
-    property var testSource: ( function connectToTestSource(sourceType) {
-        arrivalSource(sourceType) 
-            ? timetableSource.connectSource(testArrivalSource)
-            : timetableSource.connectSource(testDepartureSource)
-    })
 
-    ListModel {
+    PlasmaCore.DataModel {
         id: timetableData
+        dataSource: timetableSource
+        keyRoleFilter: "departures"
     }
 
     PlasmaCore.DataSource {
@@ -53,19 +48,18 @@ Column {
         engine: "publictransport"
         connectedSources: ["Departures no_ruter|stop=Oslo Bussterminal"]
 
-        onNewData: timetableData.append({name: sourceName, data: data})
-
         Component.onCompleted: {
             for (var i = 0; i < sources.length; i++) {
                 if ( arrivalSource(sources[i]) || departureSource(sources[i]) )
                     timetableSourceExists: true
             }
-            !timetableSourceExists ? testSource("Departures") : {}
         }
     }
 
     ListView {
         id: timetableList
+        height: parent.height
+        width: parent.width
         anchors.fill: parent
         model: timetableData
         delegate: TimetableDelegate {}
