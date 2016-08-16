@@ -49,7 +49,7 @@ PlasmaComponents.ListItem {
         id: transportLineLabel
         anchors {
             left: parent.left
-            margins: 20
+            leftMargin: 5
         }
         text: transportLine
         elide: Text.ElideRight
@@ -62,7 +62,8 @@ PlasmaComponents.ListItem {
         anchors {
             left: transportLineLabel.right
             right: dateTimeLabel.left
-            margins: 50
+            leftMargin: 50          //FIXME: do not hardcode values
+            rightMargin: 50         //FIXME: do not hardcode values
         }
         text: targetStop
         elide: Text.ElideRight
@@ -74,7 +75,7 @@ PlasmaComponents.ListItem {
         id: dateTimeLabel
         anchors {
             right: parent.right
-            margins: 20
+            rightMargin: 5
         }
         text: stopDateTime
         elide: Text.ElideRight
