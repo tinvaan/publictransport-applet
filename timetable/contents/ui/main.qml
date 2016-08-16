@@ -40,12 +40,13 @@ Item {
         id: appletHeader
         width: parent.width
         visible: true
-        //text: i18n("Stops list");
+        text: i18n("Stops list");
     }
 
     PlasmaExtras.ScrollArea {
         id: mainScrollArea
-        anchors.fill: parent
+        anchors.top: appletHeader.bottom
+        anchors.topMargin: 5
 
         height: parent.height
         width: parent.width
@@ -54,7 +55,6 @@ Item {
             id: timetableView
             anchors.fill: parent
 
-            contentWidth: width
             contentHeight: contentsColumn.height
 
             Column {

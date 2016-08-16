@@ -25,9 +25,6 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 PlasmaComponents.ListItem {
     id: timetableItem
 
-    width: parent.width
-    height: parent.height
-    anchors.fill: parent
     enabled: ListView.isCurrentItem
 
     PlasmaComponents.Label {
