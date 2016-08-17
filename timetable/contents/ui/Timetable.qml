@@ -20,9 +20,11 @@ import QtQuick 2.0
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 
-Column {
+Item {
     id: timetableRoot
+    height: parent.height
     width: parent.width
+    anchors.fill: parent
 
     property var timetableSourceExists: false
     property var alternativeSourceExists: false
