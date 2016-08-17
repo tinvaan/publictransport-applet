@@ -32,40 +32,19 @@ Item {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
-    property Item timetable: timetableLoader.item
-
     PlasmaExtras.Heading {
         id: appletHeader
-        width: parent.width
         visible: true
         text: i18n("Stops list");
     }
 
-    PlasmaExtras.ScrollArea {
-        id: mainScrollArea
+    Loader {
+        id: timetableLoader
+        width: parent.width
+        height: parent.height
         anchors.top: appletHeader.bottom
         anchors.topMargin: 5
-
-        height: parent.height
-        width: parent.width
-
-        Flickable {
-            id: timetableView
-            anchors.fill: parent
-
-            contentHeight: contentsColumn.height
-
-            Column {
-                id: contentsColumn
-                width: timetableView.width
-
-                Loader {
-                    id: timetableLoader
-                    width: parent.width
-                    source: "Timetable.qml"
-                    active: true
-                }
-            }
-        }
+        source: "Timetable.qml"
+        active: true
     }
 }
