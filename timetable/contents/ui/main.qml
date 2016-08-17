@@ -39,6 +39,16 @@ Item {
     }
 
     Loader {
+        id: serviceproviderCheckLoader
+        width: parent.width
+        height: parent.height
+        anchors.top: appletHeader.bottom
+        anchors.topMargin: 5
+        source: "CheckServiceproviders.qml"
+        active: false
+    }
+
+    Loader {
         id: timetableLoader
         width: parent.width
         height: parent.height
