@@ -25,8 +25,8 @@ import org.kde.plasma.extras 2.0 as PlasmaExtras
 Item {
     id: timetableApplet
 
-    Layout.minimumWidth: 256
-    Layout.minimumHeight: 256
+    Layout.minimumWidth: 300
+    Layout.minimumHeight: 200
     Layout.fillWidth: true
     Layout.fillHeight: true
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
