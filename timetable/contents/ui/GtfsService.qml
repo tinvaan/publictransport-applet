@@ -57,6 +57,7 @@ Item {
             importGtfsDatabase: importDb
             updateGtfsDatabase: updateDb
             deleteGtfsDatabase: deleteDb
+            updateGtfsFeedInfo: updateFeed
             gtfsImportRunning : isGtfsImportInProgress
         }
     }

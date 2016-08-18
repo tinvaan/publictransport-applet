@@ -32,6 +32,7 @@ Item
     property var importGtfsDatabase
     property var updateGtfsDatabase
     property var deleteGtfsDatabase
+    property var updateGtfsFeedInfo
 
     PlasmaExtras.Heading {
         id: header
@@ -103,25 +104,25 @@ Item
             anchors.horizontalCenter: parent.horizontalCenter
             text: i18n("Import DB")
             tooltip: i18n("Download GTFS database")
-            onClicked: importGtfsDatabase
+            onClicked: importGtfsDatabase()
         }
         PlasmaComponents.Button {
             anchors.horizontalCenter: parent.horizontalCenter
             text: i18n("Update Feed")
             tooltip: i18n("Update the downloaded GTFS feed")
-            onClicked: updateGtfsDatabase
+            onClicked: updateGtfsFeedInfo()
         }
         PlasmaComponents.Button {
             anchors.horizontalCenter: parent.horizontalCenter
             text: i18n("Update DB")
             tooltip: i18n("Update present GTFS database")
-            onClicked: updateGtfsDatabase
+            onClicked: updateGtfsDatabase()
         }
         PlasmaComponents.Button {
             anchors.horizontalCenter: parent.horizontalCenter
             text: i18n("Delete DB")
             tooltip: i18n("Delete GTFS database")
-            onClicked: deleteGtfsDatabase
+            onClicked: deleteGtfsDatabase()
         }
     }
 }
