@@ -49,10 +49,18 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         text: i18n("Configure")
+        visible: {
+            var data = mainDataSource.data["ServiceProviders"]
+            if ( data == undefined) {
+                return true
+            } else {
+                timetableLoader.active = true
+                return false
+            }
+        }
         onClicked: {
             this.visible = false
             serviceproviderCheckLoader.active = true
-            //timetableLoader.active = true
         }
     }
 

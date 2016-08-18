@@ -20,11 +20,36 @@
 import QtQuick 2.0
 
 import org.kde.plasma.core 2.0 as PlasmaCore
+import org.kde.plasma.components 2.0 as PlasmaComponents
 
 Item {
     id: serviceproviderCheckRoot
 
     anchors.fill: parent
+
+    PlasmaComponents.Label {
+        id: errorLabel
+        anchors {
+            verticalCenter: parent.verticalCenter
+            horizontalCenter: parent.horizontalCenter
+        }
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        text: i18n("Failed to locate any service providers"
+                + "\nPlease download a service provider and try again")
+        visible: false
+    }
+
+    PlasmaComponents.Button {
+        id: downloadProvidersButton
+        anchors {
+            top: errorLabel.bottom
+            topMargin: 2
+            horizontalCenter: parent.horizontalCenter
+        }
+        text: i18n("Download")
+        visible: false
+    }
 
     Loader {
         id: gtfsImportLoader
@@ -32,8 +57,14 @@ Item {
         source: "GtfsService.qml"
         active: {
             var data = mainDataSource.data["ServiceProviders"]
-            console.log(JSON.stringify(data.count))
-            return data.isEmpty()
+            if (data == undefined) {
+                // No service providers found
+                // Prompt the user to download new service providers
+                errorLabel.visible = true
+                downloadProvidersButton.visible = true
+                return false
+            }
+            return true
         }
     }
 }
