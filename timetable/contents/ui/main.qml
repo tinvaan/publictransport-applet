@@ -33,6 +33,13 @@ Item {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
+    property string gtfsState: mainDataSource.data["ServiceProviders"][defaultProviderId()]["state"]
+    property var defaultProviderId: (function getDefaultServiceProviderId() {
+        var data = mainDataSource.data["ServiceProviders"]
+        var serviceproviders = Object.keys(data)
+        return serviceproviders[0]
+    })
+
     PlasmaCore.DataSource {
         id: mainDataSource
 
@@ -50,8 +57,10 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         text: i18n("Configure")
         visible: {
-            var data = mainDataSource.data["ServiceProviders"]
             if ( data == undefined) {
+                return true
+            } else if (gtfsState == "gtfs_feed_import_pending") {
+                timetableLoader.active = false
                 return true
             } else {
                 timetableLoader.active = true

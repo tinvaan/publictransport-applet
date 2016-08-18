@@ -48,6 +48,7 @@ Item
     ColumnLayout
     {
         id: operationButtonsLayout
+        spacing: 2
 
         anchors {
             fill: parent
