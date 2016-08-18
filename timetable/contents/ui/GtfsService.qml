@@ -24,28 +24,39 @@ Item {
     anchors.fill: parent
 
     property var isGtfsImportInProgress: false
+
+    // TODO: Handle the case when more than one service providers are installed
+    property var providerId: (function getServiceProviderId() {
+        var data = mainDataSource.data["ServiceProviders"]
+        var serviceproviders = Object.keys(data)
+        return serviceproviders[0]
+    })
+
     property var importDb: (function startGtfsImport() {
         var service = mainDataSource.serviceForSource("GTFS")
         var op = service.operationDescription("importGtfsDatabase")
-        op.serviceProviderId = mainDataSource.key.id        //FIXME
+        op.serviceProviderId = providerId
         service.startOperationCall(op)
     })
+
     property var updateFeed: (function updateGtfsFeedInfo() {
         var service = mainDataSource.serviceForSource("GTFS")
         var op = service.operationDescription("importGtfsDatabase")
-        op.serviceProviderId = mainDataSource.key.id        //FIXME
+        op.serviceProviderId = providerId
         service.startOperationCall(op)
     })
+
     property var updateDb: (function startGtfsUpdate() {
         var service = mainDataSource.serviceForSource("GTFS")
         var op = service.operationDescription("updateGtfsDatabase")
-        op.serviceProviderId = mainDataSource.key.id        //FIXME
+        op.serviceProviderId = providerId
         service.startOperationCall(op)
     })
+
     property var deleteDb: (function deleteGtfsDatabase() {
         var service = mainDataSource.serviceForSource("GTFS")
         var op = service.operationDescription("deleteGtfsFeedInfo")
-        op.serviceProviderId = mainDataSource.key.id        //FIXME
+        op.serviceProviderId = providerId
         service.startOperationCall(op)
     })
 
