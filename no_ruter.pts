@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceProvider fileVersion="1.1" version="1.0" type="gtfs">
+    <name lang="en">Oslo, Norway</name>
+    <description lang="en">Accessor for vechilces in Oslo, using the GTFS feed of Ruter, Inc.</description>
+    <author>
+        <fullname>R. Harish Navnit</fullname>
+        <short>rharish</short>
+        <email>harishnavnit@gmail.com</email>
+    </author>
+    <url>https://ruter.no/labs/</url>
+    <shortUrl>www.ruter.no/labs/</shortUrl>
+    <credit>Route and arrival data provided by Ruter Inc</credit>
+    <feedUrl>http://reis.ruter.no/gtfs/gtfs.zip</feedUrl>
+</serviceProvider>
