@@ -50,6 +50,8 @@ KF5 as GTFS specifies a common standard for the data, making it easier to handle
 ## Dependencies
 * [publictransport dataengine](https://quickgit.kde.org/?p=clones%2Fpublictransport%2Frharishnavnit%2Fpublictransport-frameworks.git) - "kf5" branch
 * GTFS Service providers
+* KDE Frameworks 5
+* Qt and QtQuick libraries
 
 ## How to get a GTFS service provider for my location ?
 You can download GTFS service providers from [KDE Look](http://kdelook.org/index.php?xcontentmode=638).
@@ -104,7 +106,7 @@ would expect, being written in Qml.
 Untill the configuration UI's are ready, to configure service providers, you must do the following:
 
 1. Create a directory `plasma_engine_publictransport/serviceProviders` inside `~/.local/share` and move
-your downloaded service provider file inside it. This is your *installation subdirectory*
+your downloaded service provider file inside it. This is your **installation subdirectory**
 2. Launch `plasmaengineexplorer` and check if your service provider is discovered correctly.
 3. Start the "GTFS" service
     * Type "GTFS" in the field with placeholder "Service for source" and start a request.
