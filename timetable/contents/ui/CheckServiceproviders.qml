@@ -24,27 +24,15 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 Item {
     id: serviceproviderCheckRoot
 
-    width: parent.width
-    height: parent.height
     anchors.fill: parent
-
-    PlasmaCore.DataSource {
-        id: mainDataSource
-
-        interval: 6000
-        engine: "publictransport"
-
-        // At this point we don't know if service providers exist locally
-        // Hence it's not possible to form and connect to a arrival/departure source
-        connectedSources: ["ServiceProviders"]
-    }
 
     Loader {
         id: gtfsImportLoader
         anchors.fill: parent
         source: "GtfsService.qml"
         active: {
-            var data = mainDataSource.data
+            var data = mainDataSource.data["ServiceProviders"]
+            console.log(JSON.stringify(data.count))
             return data.isEmpty()
         }
     }

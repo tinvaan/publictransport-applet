@@ -18,8 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 
-import org.kde.plasma.components 2.0 as PlasmaComponents
+import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
+import org.kde.plasma.components 2.0 as PlasmaComponents
 
 
 Item {
@@ -32,6 +33,17 @@ Item {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
+    PlasmaCore.DataSource {
+        id: mainDataSource
+
+        interval: 6000
+        engine: "publictransport"
+
+        // At this point we don't know if service providers exist locally
+        // Hence it's not possible to form and connect to a arrival/departure source
+        connectedSources: ["ServiceProviders"]
+    }
+
     PlasmaComponents.Button {
         id: configureButton
         anchors.horizontalCenter: parent.horizontalCenter
@@ -39,8 +51,8 @@ Item {
         text: i18n("Configure")
         onClicked: {
             this.visible = false
-            //serviceproviderCheckLoader.active = true
-            timetableLoader.active = true
+            serviceproviderCheckLoader.active = true
+            //timetableLoader.active = true
         }
     }
 

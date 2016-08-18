@@ -51,25 +51,51 @@ Item
         anchors {
             fill: parent
             topMargin: header.height
+            horizontalCenter: parent.horizontalCenter
         }
 
         RowLayout {
-            id: serviceproviderDetailsRow
-            spacing: 2
-            PlasmaComponents.Label {
-                id: gtfsServiceproviderIdLabel
-                Layout.fillWidth: true
-                wrapMode: Text.WordWrap
-                horizontalAlignment: Text.AlignHCenter
-                text: i18n("Service Provider")
+            spacing: 1
+            anchors.horizontalCenter: parent.horizontalCenter
+            ColumnLayout {
+                id: regionDetailsRow
+                spacing: 2
+
+                PlasmaComponents.Label {
+                    id: regionLabel
+                    Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("<b>Country/Region</b>")
+                }
+                PlasmaComponents.Label {
+                    id: gtfsServiceproviderIdLabel
+                    Layout.fillWidth: true
+                    wrapMode: Text.WordWrap
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("<b>Service Provider</b>")
+                }
             }
-            PlasmaComponents.Label {
-                id: gtfsServiceproviderIdDisplay
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignHCenter
-                elide: Text.ElideRight
-                wrapMode: Text.WordWrap
-                text: i18n("no_ruter")
+            ColumnLayout {
+                id: serviceproviderDetailsRow
+                spacing: 2
+
+                PlasmaComponents.Label {
+                    id: regionDisplay
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    elide: Text.ElideRight
+                    wrapMode: Text.WordWrap
+                    text: i18n("Oslo, Norway")
+                }
+                PlasmaComponents.Label {
+                    id: gtfsServiceproviderIdDisplay
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    elide: Text.ElideRight
+                    wrapMode: Text.WordWrap
+                    text: i18n("no_ruter")
+                }
             }
         }
 
