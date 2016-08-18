@@ -64,6 +64,16 @@ Modify the relevant XML tags of this [example GTFS service provider file](./no_r
 **installation subdirectory**.
 
 ### Naming conventions for newly added service providers
+The public transport dataengine recognizes service provider files with "__.pts__" extensions.
+The filename without the extension forms your service provider Id. So it is important to name
+your service provider filename correctly.
+As a rule of thumb, service provider Id's follow the following format
+```
+    <country_shortcode>_<agency/provider>.<extension>
+```
+Hence, for example, a service provider for Oslo, in Norway provided by Ruter Inc. would be named as
+`no_ruter.pts` and `no_ruter` becomes the service provider Id. Use lower case characters in naming
+your service provider file.
 
 ## Creating an arrival/departure source
 To view departures and/or arrivals, we must first create a datasource in the dataengine.
