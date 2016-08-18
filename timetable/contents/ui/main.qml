@@ -32,6 +32,18 @@ Item {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
+    PlasmaComponents.Button {
+        id: configureButton
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        text: i18n("Configure")
+        onClicked: {
+            this.visible = false
+            //serviceproviderCheckLoader.active = true
+            timetableLoader.active = true
+        }
+    }
+
     Loader {
         id: serviceproviderCheckLoader
         anchors.fill: parent
@@ -43,6 +55,6 @@ Item {
         id: timetableLoader
         anchors.fill: parent
         source: "Timetable.qml"
-        active: true
+        active: false
     }
 }

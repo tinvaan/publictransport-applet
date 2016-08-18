@@ -63,13 +63,17 @@ Item {
         text: i18n("Stops list");
     }
 
-    ListView {
-        id: timetableList
+    PlasmaExtras.ScrollArea {
         width: parent.width
         height: parent.height
         anchors.top: appletHeader.bottom
         anchors.topMargin: 5
+
+        ListView {
+        id: timetableList
+        anchors.fill: parent
         model: timetableData
         delegate: TimetableDelegate {}
+    }
     }
 }
