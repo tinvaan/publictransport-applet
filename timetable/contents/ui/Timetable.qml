@@ -57,11 +57,18 @@ Item {
         }
     }
 
+    PlasmaExtras.Heading {
+        id: appletHeader
+        visible: true
+        text: i18n("Stops list");
+    }
+
     ListView {
         id: timetableList
-        height: parent.height
         width: parent.width
-        anchors.fill: parent
+        height: parent.height
+        anchors.top: appletHeader.bottom
+        anchors.topMargin: 5
         model: timetableData
         delegate: TimetableDelegate {}
     }

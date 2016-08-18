@@ -22,7 +22,7 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 PlasmaComponents.ListItem {
     id: timetableItem
 
-    enabled: ListView.isCurrentItem
+    enabled: true
 
     PlasmaComponents.Label {
         id: transportLineLabel

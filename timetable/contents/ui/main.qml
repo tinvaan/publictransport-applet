@@ -32,28 +32,16 @@ Item {
     LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
-    PlasmaExtras.Heading {
-        id: appletHeader
-        visible: true
-        text: i18n("Stops list");
-    }
-
     Loader {
         id: serviceproviderCheckLoader
-        width: parent.width
-        height: parent.height
-        anchors.top: appletHeader.bottom
-        anchors.topMargin: 5
+        anchors.fill: parent
         source: "CheckServiceproviders.qml"
         active: false
     }
 
     Loader {
         id: timetableLoader
-        width: parent.width
-        height: parent.height
-        anchors.top: appletHeader.bottom
-        anchors.topMargin: 5
+        anchors.fill: parent
         source: "Timetable.qml"
         active: true
     }
