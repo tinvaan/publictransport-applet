@@ -49,6 +49,11 @@ Item {
         }
         text: i18n("Download")
         visible: false
+
+        // TODO: Integrate the applet code with the engine code
+        //       Add a Q_INVOKABLE method to show service provider
+        //       download dialog.
+        onClicked: plasmoid.nativeInterface.downloadNewProviders()
     }
 
     Loader {
